@@ -36,7 +36,21 @@ def link(src, dest):
 
 def copylink(src, dest):
     copy(src, dest)
+    delete(src)
     link(dest, src)
+
+def backup(file):
+    
+    if not file:
+        raise ErrFileNotFound
+
+    shutil.copyfile(file, file + '.backup')
+
+def delete(file):
+    if not file:
+        raise ErrFileNotFound
+
+    os.remove(file)
 
 
 def main():
@@ -46,6 +60,7 @@ def main():
             raise ErrNoDotFileFound
 
         print(file)
+        backup(HOME_DIR + '/' + file)
         copylink(HOME_DIR + '/' + file, DIR_PATH + '/' + file)
 
     

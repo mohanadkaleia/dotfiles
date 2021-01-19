@@ -1,0 +1,35 @@
+# ---------------------------------
+# Common aliases
+# ---------------------------------
+
+alias home='cd ~'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias '?=man'
+alias ls='ls -A'
+alias ps-grep='ps aux | grep'
+
+
+# ---------------------------------
+# Python virtual env aliases
+# ---------------------------------
+
+# Create a virtualenv with python3 as the interpreter
+# I usually name my virtualenv .venv
+alias venv="virtualenv -p $( which python3 ) .venv"
+alias vac='source .venv/bin/activate'
+alias python=python3
+
+# ---------------------------------
+# Aliases for tmux
+# ---------------------------------
+
+# Revert from the three pane split (see the ide function) into a single pane
+# -a kills all panes except the one specified by -t, and 0 is the first pane made (and hence the main pane)
+alias xide='tmux kill-pane -a -t 0'
+
+# This should be the last line of the file
+# For local changes
+# Don't make edits below this
+[ -f ".aliases.local" ] && source ".aliases.local"

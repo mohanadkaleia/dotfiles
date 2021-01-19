@@ -54,12 +54,13 @@ def delete(file):
 
 
 def main():
+    print("Bootstraping your dotfiles")
     for file in FILES_TO_TRACK:
         
         if not file.startswith('.'):
             raise ErrNoDotFileFound
 
-        print(file)
+        print(f"### {file} ###")
         backup(HOME_DIR + '/' + file)
         copylink(HOME_DIR + '/' + file, DIR_PATH + '/' + file)
 

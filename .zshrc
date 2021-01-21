@@ -1,3 +1,5 @@
+export PATH_TO_DOTFILES="$HOME/Workspace/dotfiles"
+
 # Source files
 source "$PATH_TO_DOTFILES/.aliases"
 source "$PATH_TO_DOTFILES/.exports"

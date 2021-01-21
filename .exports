@@ -1,5 +1,4 @@
 export EDITOR=vim
-export PATH_TO_DOTFILES="$HOME/Workspace/dotfiles"
 
 # User Defined Variables:
 export GOPATH=$HOME/go

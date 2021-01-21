@@ -24,4 +24,6 @@ virtualenv
 
 source $ZSH/oh-my-zsh.sh
 
+fortune | cowsay
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

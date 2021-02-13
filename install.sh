@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
+# Acknowledgment: this file has been forked from here: https://gist.github.com/mrichman/f5c0c6f0c0873392c719265dfd209e12
 #
 # Bootstrap script for setting up a new OSX machine
-#
+# 
 # This should be idempotent so it can be run multiple times.
 #
 # Notes:

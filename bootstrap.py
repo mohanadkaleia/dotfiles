@@ -52,6 +52,17 @@ def delete(file):
 
     os.remove(file)
 
+def install_apps():
+    """
+    TODO: 
+    1. Check what operating system it is
+    2. Install the following packages:
+    * fortune, cowsay, zsh, oh-my-zsh, git, homebrew, 
+    """
+    
+    pass
+
+
 
 def main():
     print("Bootstraping your dotfiles")

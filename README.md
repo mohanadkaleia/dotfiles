@@ -4,7 +4,7 @@ For long time I wanted to sync my dotfiles with my git account. Well, here it is
 
 *Note*: This works only on OSX operating systems, I will update it later on to cover Ubuntu systems.
 
-# How it works: 
+# How it works
 This will ask you to bootstrap your OS by installing a bunch of tools (you can see and customize whatever you need by modifying `install.sh` file). You can skip this step if you want. Then the script will backup your dotfiles specified by the `FILES_TO_TRACK` variable in the `main.py` file. Then will link the dot files from this project with your home directory. 
 
 # Prerequisit

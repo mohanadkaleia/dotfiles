@@ -45,13 +45,9 @@ brew update
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
 # brew install findutils
 
-PACKAGES=(	
-	awscli		
-	cask	
+PACKAGES=(					
 	curl
-	dep
-	flake8
-	gist
+	flake8	
 	git
 	glances		
 	jq			

@@ -48,8 +48,7 @@ brew update
 PACKAGES=(					
 	curl
 	flake8	
-	git
-	glances		
+	git			
 	jq			
 	node
 	openssl	
@@ -75,22 +74,6 @@ brew install "${PACKAGES[@]}"
 
 echo_ok "Cleaning up..."
 brew cleanup
-
-echo_ok "Installing fonts..."
-brew tap caskroom/fonts
-FONTS=(
-	font-clear-sans
-	font-consolas-for-powerline
-	font-dejavu-sans-mono-for-powerline
-	font-fira-code
-	font-fira-mono-for-powerline
-	font-inconsolata
-	font-inconsolata-for-powerline
-	font-liberation-mono-for-powerline
-	font-menlo-for-powerline
-	font-roboto
-)
-brew cask install "${FONTS[@]}"
 
 echo_ok "Installing Python packages..."
 PYTHON_PACKAGES=(

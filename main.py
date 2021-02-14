@@ -52,20 +52,16 @@ def delete(file):
 
     os.remove(file)
 
-def install_apps():
-    """
-    TODO: 
-    1. Check what operating system it is
-    2. Install the following packages:
-    * fortune, cowsay, zsh, oh-my-zsh, git, homebrew, 
-    """
+
+def main():    
+    val = input("Do you want to bootstrap your OS? y, N: ")
+    if val in ("yes", "y", "Y"):
+        print("#### Bootstrapping your OS")
+        os.system("./install.sh") 
     
-    pass
-
-
-
-def main():
-    print("Bootstraping your dotfiles")
+    
+    print("#### Link your dot files!")
+    
     for file in FILES_TO_TRACK:
         
         if not file.startswith('.'):
@@ -73,7 +69,8 @@ def main():
 
         print(f"### {file} ###")
         backup(HOME_DIR + '/' + file)
-        copylink(HOME_DIR + '/' + file, DIR_PATH + '/' + file)
+        delete(HOME_DIR + '/' + file)
+        link(DIR_PATH + '/' + file, HOME_DIR + '/' + file)
 
     
 if __name__ == '__main__':

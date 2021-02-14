@@ -26,3 +26,4 @@ source $ZSH/oh-my-zsh.sh
 fortune | cowsay
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/sbin:$PATH"

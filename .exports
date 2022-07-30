@@ -10,6 +10,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:/usr/local/opt/rabbitmq/sbin
 export PATH="/usr/local/sbin:$PATH"'
+export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 # This should be the last line of the file
 # For local changes

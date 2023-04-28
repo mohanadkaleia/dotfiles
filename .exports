@@ -1,7 +1,7 @@
 export EDITOR=vim
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/mohanad/.oh-my-zsh"
+export ZSH="/home/mohanad/.oh-my-zsh"
 
 # User Defined Variables:
 export GOPATH=$HOME/go

@@ -1,7 +1,7 @@
 export EDITOR=vim
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/mohanad/.oh-my-zsh"
+export ZSH="/Users/mohanadkaleia/.oh-my-zsh"
 
 # User Defined Variables:
 export GOPATH=$HOME/go
@@ -9,7 +9,7 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:/usr/local/opt/rabbitmq/sbin
-export PATH="/usr/local/sbin:$PATH"'
+export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 # This should be the last line of the file

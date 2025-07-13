@@ -1,8 +1,131 @@
 # .dotfiles 👾
+For long time I wanted to sync my dotfiles with my git account. Well, here it is! In this repo, I'm 
+sharing my environment's dotfiles.
 
-For long time I wanted to sync my dotfiles with my git account. Well, here it is! In this repo, I'm sharing my environment's dotfiles. 
+## ✨ Features
 
-*Note*: This works only on OSX operating systems, I will update it later on to cover Ubuntu systems.
+### 🛠️ Development Tools
+- **Python**: pyenv, pipenv, virtualenv, ipython
+- **Node.js**: Latest LTS version
+- **Go**: Complete Go development environment
+- **Git**: Configured with colors and credential helper
+- **Ruby**: Bundler and Rake gems
+
+### 🐚 Shell Environment (Zsh + Oh My Zsh)
+- **Theme**: af-magic (clean and informative)
+- **Plugins**: git, virtualenv
+- **Enhancements**: 
+  - zsh-autosuggestions
+  - zsh-completions  
+  - zsh-syntax-highlighting
+  - fortune + cowsay for fun terminal greetings
+
+### 🔧 Useful Tools
+- **Code Quality**: flake8, shellcheck
+- **File Operations**: tree, watch, wget, curl
+- **System**: jq, openssl, xz
+- **Fun**: fortune, cowsay
+
+### 📝 Vim Configuration
+- **Plugin Manager**: Vundle
+- **File Navigation**: NERDTree, CtrlP, TagBar
+- **UI Enhancement**: Airline, Lightline, Color schemes
+- **Language Support**: Python, Go, XML/HTML, ReStructuredText
+- **Productivity**: Snippets, Surround, Commentary
+- **Code Quality**: Syntastic, Python-mode
+
+### 🎨 Custom Aliases & Functions
+- **Navigation**: Quick directory shortcuts (`..`, `...`, `home`)
+- **Python**: Virtual environment management (`venv`, `vac`)
+- **Tmux**: IDE-like pane management (`xide`)
+- **System**: Enhanced `ls`, process search
+
+## 🚀 Quick Start
+
+### Prerequisites
+- macOS (currently only supported OS)
+- Python 3.x
+- Xcode Command Line Tools
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/dotfiles.git
+   cd dotfiles
+   ```
+
+2. **Install everything**:
+   ```bash
+   python main.py
+   ```
+   
+   The script will:
+   - Ask if you want to bootstrap your OS (install tools)
+   - Backup your existing dotfiles
+   - Link the dotfiles from this repo to your home directory
+
+## 📁 File Structure
+
+```
+dotfiles/
+├── .zshrc              # Main shell configuration
+├── .aliases            # Custom shell aliases
+├── .exports            # Environment variables
+├── .gitconfig          # Git configuration (personalized)
+├── .vimrc              # Vim configuration
+├── install.sh          # OS bootstrap script
+├── main.py             # Dotfile management script
+└── README.md           # This file
+```
+
+## 🔧 Customization
+
+### Adding Your Own Aliases
+Create a `.aliases.local` file in your home directory:
+```bash
+# Your personal aliases
+alias myproject='cd ~/projects/myproject'
+alias deploy='./deploy.sh'
+```
+
+### Adding Your Own Exports
+Create a `.exports.local` file in your home directory:
+```bash
+# Your personal environment variables
+export MY_API_KEY="your-api-key"
+export CUSTOM_PATH="/path/to/custom/tools"
+```
+
+### Modifying Vim Configuration
+Edit `.vimrc` to add or remove plugins. After changes, run in Vim:
+```vim
+:PluginInstall
+```
+
+## 🎯 What Gets Installed
+
+### Homebrew Packages
+- **Development**: git, python3, node, go
+- **Python Tools**: pyenv, pyenv-virtualenv, pipenv
+- **Shell Enhancement**: zsh, zsh-autosuggestions, zsh-completions, zsh-syntax-highlighting
+- **Utilities**: curl, wget, jq, tree, watch, xz, openssl
+- **Code Quality**: flake8, shellcheck
+- **Fun**: fortune, cowsay
+
+### Python Packages
+- ipython
+- virtualenv
+- virtualenvwrapper
+
+### Ruby Gems
+- bundler
+- rake
+
+### Shell Setup
+- Oh My Zsh installation
+- Default shell changed to Zsh
+- GitHub SSH key generation (if needed)
 
 # How it works
 This will ask you to bootstrap your OS by installing a bunch of tools (you can see and customize whatever you need by modifying `install.sh` file). You can skip this step if you want. Then the script will backup your dotfiles specified by the `FILES_TO_TRACK` variable in the `main.py` file. Then will link the dot files from this project with your home directory. 
@@ -10,12 +133,20 @@ This will ask you to bootstrap your OS by installing a bunch of tools (you can s
 # Prerequisit
 Nothing, only `Python` 🐍
 
+1. **Permission Denied**: Make sure you have Xcode Command Line Tools installed
+   ```bash
+   xcode-select --install
+   ```
 
-```
-1. Clone this repo into your local
-2. python main.py
-3. Enjoy!!
-```
+2. **Homebrew Issues**: If Homebrew fails to install, try:
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+3. **Vim Plugins Not Working**: Run in Vim:
+   ```vim
+   :PluginInstall
+   ```
 
 # License
 Well, rights are lefted here, you can freely fork and use this project. (lol I doubt anyone would do that anyway)

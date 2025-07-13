@@ -1,4 +1,4 @@
-export PATH_TO_DOTFILES="$HOME/Workspace/dotfiles"
+export PATH_TO_DOTFILES="$HOME/workspace/dotfiles"
 
 # Source files
 source "$PATH_TO_DOTFILES/.aliases"

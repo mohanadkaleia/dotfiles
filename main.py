@@ -11,7 +11,7 @@ class ErrNoFilesToTrack(Exception):
 class ErrNoDotFileFound(Exception):
     pass
 
-FILES_TO_TRACK = ['.zshrc', '.gitconfig', '.vimrc']
+FILES_TO_TRACK = ['.zshrc', '.gitconfig', '.vimrc', '.aliases', '.exports']
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 HOME_DIR = os.path.expanduser('~')
 

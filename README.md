@@ -65,67 +65,11 @@ sharing my environment's dotfiles.
    - Backup your existing dotfiles
    - Link the dotfiles from this repo to your home directory
 
-## 📁 File Structure
-
-```
-dotfiles/
-├── .zshrc              # Main shell configuration
-├── .aliases            # Custom shell aliases
-├── .exports            # Environment variables
-├── .gitconfig          # Git configuration (personalized)
-├── .vimrc              # Vim configuration
-├── install.sh          # OS bootstrap script
-├── main.py             # Dotfile management script
-└── README.md           # This file
-```
-
-## 🔧 Customization
-
-### Adding Your Own Aliases
-Create a `.aliases.local` file in your home directory:
-```bash
-# Your personal aliases
-alias myproject='cd ~/projects/myproject'
-alias deploy='./deploy.sh'
-```
-
-### Adding Your Own Exports
-Create a `.exports.local` file in your home directory:
-```bash
-# Your personal environment variables
-export MY_API_KEY="your-api-key"
-export CUSTOM_PATH="/path/to/custom/tools"
-```
-
 ### Modifying Vim Configuration
 Edit `.vimrc` to add or remove plugins. After changes, run in Vim:
 ```vim
 :PluginInstall
 ```
-
-## 🎯 What Gets Installed
-
-### Homebrew Packages
-- **Development**: git, python3, node, go
-- **Python Tools**: pyenv, pyenv-virtualenv, pipenv
-- **Shell Enhancement**: zsh, zsh-autosuggestions, zsh-completions, zsh-syntax-highlighting
-- **Utilities**: curl, wget, jq, tree, watch, xz, openssl
-- **Code Quality**: flake8, shellcheck
-- **Fun**: fortune, cowsay
-
-### Python Packages
-- ipython
-- virtualenv
-- virtualenvwrapper
-
-### Ruby Gems
-- bundler
-- rake
-
-### Shell Setup
-- Oh My Zsh installation
-- Default shell changed to Zsh
-- Modern GitHub authentication setup (Personal Access Token or SSH)
 
 # How it works
 This will ask you to bootstrap your OS by installing a bunch of tools (you can see and customize whatever you need by modifying `install.sh` file). You can skip this step if you want. Then the script will backup your dotfiles specified by the `FILES_TO_TRACK` variable in the `main.py` file. Then will link the dot files from this project with your home directory. 

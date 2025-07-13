@@ -89,41 +89,87 @@ if [[ ! -f ~/.zshrc ]]; then
 	chsh -s /bin/zsh
 fi
 
-echo_ok "Configuring Github"
+echo_ok "Configuring Git and GitHub"
 
-if [[ ! -f ~/.ssh/id_rsa ]]; then
+# Check if git is already configured
+if [[ -z "$(git config --global user.name)" ]] || [[ -z "$(git config --global user.email)" ]]; then
 	echo ''
+	echo '##### Git Configuration #####'
 	echo '##### Please enter your github username: '
 	read github_user
 	echo '##### Please enter your github email address: '
 	read github_email
 
-	# setup github
+	# setup git config
 	if [[ $github_user && $github_email ]]; then
-		# setup config
 		git config --global user.name "$github_user"
 		git config --global user.email "$github_email"
-		git config --global github.user "$github_user"
-		# git config --global github.token your_token_here
 		git config --global color.ui true
-		git config --global push.default current		
-
-		# set rsa key
-		curl -s -O http://github-media-downloads.s3.amazonaws.com/osx/git-credential-osxkeychain
-		chmod u+x git-credential-osxkeychain
-		sudo mv git-credential-osxkeychain "$(dirname $(which git))/git-credential-osxkeychain"
-		git config --global credential.helper osxkeychain
-
-		# generate ssh key
-		cd ~/.ssh || exit
-		ssh-keygen -t rsa -C "$github_email"
-		pbcopy <~/.ssh/id_rsa.pub
-		echo ''
-		echo '##### The following rsa key has been copied to your clipboard: '
-		cat ~/.ssh/id_rsa.pub
-		echo '##### Follow step 4 to complete: https://help.github.com/articles/generating-ssh-keys'
-		ssh -T git@github.com
+		git config --global push.default current
+		git config --global init.defaultBranch main
+		
+		echo_ok "Git configured successfully!"
 	fi
 fi
+
+# Setup credential helper for macOS
+if [[ ! -f "$(dirname $(which git))/git-credential-osxkeychain" ]]; then
+	echo_ok "Setting up Git credential helper..."
+	curl -s -O https://github-media-downloads.s3.amazonaws.com/osx/git-credential-osxkeychain
+	chmod u+x git-credential-osxkeychain
+	sudo mv git-credential-osxkeychain "$(dirname $(which git))/git-credential-osxkeychain"
+	git config --global credential.helper osxkeychain
+	echo_ok "Credential helper installed!"
+fi
+
+# Offer SSH key setup as an option
+echo ''
+echo '##### GitHub Authentication Setup #####'
+echo 'Choose your preferred authentication method:'
+echo '1. Personal Access Token (Recommended for HTTPS)'
+echo '2. SSH Key (Recommended for SSH)'
+echo '3. Skip for now'
+read -p 'Enter your choice (1-3): ' auth_choice
+
+case $auth_choice in
+	1)
+		echo ''
+		echo '##### Personal Access Token Setup #####'
+		echo 'To use Personal Access Token:'
+		echo '1. Go to GitHub.com → Settings → Developer settings → Personal access tokens'
+		echo '2. Generate a new token with "repo" permissions'
+		echo '3. When Git prompts for password, use the token instead'
+		echo ''
+		echo 'The token will be stored securely in macOS Keychain'
+		echo_ok "Personal Access Token setup instructions displayed!"
+		;;
+	2)
+		if [[ ! -f ~/.ssh/id_rsa ]]; then
+			echo ''
+			echo '##### SSH Key Setup #####'
+			echo 'Generating SSH key...'
+			cd ~/.ssh || exit
+			ssh-keygen -t ed25519 -C "$(git config --global user.email)" -f ~/.ssh/id_rsa
+			pbcopy <~/.ssh/id_rsa.pub
+			echo ''
+			echo '##### SSH public key copied to clipboard! #####'
+			echo 'Add it to GitHub:'
+			echo '1. Go to GitHub.com → Settings → SSH and GPG keys'
+			echo '2. Click "New SSH key"'
+			echo '3. Paste the key and save'
+			echo ''
+			echo 'Testing SSH connection...'
+			ssh -T git@github.com
+		else
+			echo_ok "SSH key already exists!"
+		fi
+		;;
+	3)
+		echo_warn "Skipping authentication setup. You can configure it later."
+		;;
+	*)
+		echo_warn "Invalid choice. Skipping authentication setup."
+		;;
+esac
 
 echo_ok "Bootstrapping complete"

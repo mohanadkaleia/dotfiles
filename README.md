@@ -125,7 +125,7 @@ Edit `.vimrc` to add or remove plugins. After changes, run in Vim:
 ### Shell Setup
 - Oh My Zsh installation
 - Default shell changed to Zsh
-- GitHub SSH key generation (if needed)
+- Modern GitHub authentication setup (Personal Access Token or SSH)
 
 # How it works
 This will ask you to bootstrap your OS by installing a bunch of tools (you can see and customize whatever you need by modifying `install.sh` file). You can skip this step if you want. Then the script will backup your dotfiles specified by the `FILES_TO_TRACK` variable in the `main.py` file. Then will link the dot files from this project with your home directory. 
@@ -143,7 +143,12 @@ Nothing, only `Python` 🐍
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
 
-3. **Vim Plugins Not Working**: Run in Vim:
+3. **GitHub Authentication Issues**: 
+   - For HTTPS: Use Personal Access Token instead of password
+   - For SSH: Ensure SSH key is added to GitHub account
+   - See GitHub's authentication documentation for details
+
+4. **Vim Plugins Not Working**: Run in Vim:
    ```vim
    :PluginInstall
    ```
